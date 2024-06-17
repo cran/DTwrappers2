@@ -120,7 +120,7 @@ table, .body h2 { border-bottom: 1px solid #666; }
 .body .appendix, .appendix ~ h2 { border-bottom-style: dashed; }
 .footnote-ref a::before { content: "["; }
 .footnote-ref a::after { content: "]"; }
-.footnotes::before {
+section.footnotes::before {
   content: "";
   display: block;
   max-width: 20em;
@@ -139,8 +139,6 @@ table, .body h2 { border-bottom: 1px solid #666; }
 </style>
 </head>
 <body>
-<div class="include-before">
-</div>
 <div class="frontmatter">
 <div class="title"><h1>Introduction to DTwrappers2</h1></div>
 <div class="author"><h2></h2></div>
@@ -437,11 +435,11 @@ dt.format.numerics(dt.name = &quot;grouped.means&quot;, the.variables = c(&quot;
 #&gt; 2: versicolor         5.94 5,939.34
 #&gt; 3:  virginica         6.59 6,591.39
 </code></pre>
-<h3 id="methods-round-exactly-and-dt-round-exactly">Methods:  round.exactly and dt.round.exactly</h3>
-<p>Traditional rounding provides results up to a specified number of digits.  Rounding 3.96 to 3 decimal places would only result in 2 digits displayed.  The round.exactly function creates character outputs that add lagging zeros.  This ensures that every entry of a variable has the same number of decimal places.  The result is returned as a character vector.</p>
-<pre><code class="language-r">round.exactly(x = iris$Sepal.Length[1:5], digits = 3)
+<h3 id="methods-round-exactly-and-dt-round-exactly">Methods:  round_exactly and dt.round.exactly</h3>
+<p>Traditional rounding provides results up to a specified number of digits.  Rounding 3.96 to 3 decimal places would only result in 2 digits displayed.  The round_exactly function creates character outputs that add lagging zeros.  This ensures that every entry of a variable has the same number of decimal places.  The result is returned as a character vector.</p>
+<pre><code class="language-r">round_exactly(x = iris$Sepal.Length[1:5], digits = 3)
 #&gt; [1] &quot;5.100&quot; &quot;4.900&quot; &quot;4.700&quot; &quot;4.600&quot; &quot;5.000&quot;
-round.exactly(x = iris$Sepal.Length[1:5], digits = 5)
+round_exactly(x = iris$Sepal.Length[1:5], digits = 5)
 #&gt; [1] &quot;5.10000&quot; &quot;4.90000&quot; &quot;4.70000&quot; &quot;4.60000&quot; &quot;5.00000&quot;
 
 dt.round.exactly(dt.name = &quot;grouped.means&quot;, the.variables = c(&quot;Sepal.Length&quot;, &quot;Sepal.Width&quot;),
@@ -572,8 +570,6 @@ dt.mean.measured(dt.name = &quot;iris&quot;, the.variables = c(&quot;noise&quot;
 <h2 id="discussion">Discussion</h2>
 <p>DTwrappers2 presents a variety of methods for cleaning and summarizing data across multiple variables.  Individually, these calculations resolve small inconveniences with analyzing data in a variety of settings.  Collectively, they allow for a set of tools that can better facilitate exploration, analysis, and reporting of data.  Incorporating built-in filters and groupings expands upon the settings in which these tools might be valuable.</p>
 <p>The back-end calculations of DTwrappers2 are performed using a translation to data.table’s syntax.  This enables efficient computation with expected performance improvements over other methods.  Users who want to practice with data.table can also study the coding outputs as working examples.  The methods presented here rely upon a call to the lapply function within data.table’s j step while specifying the variables to perform the calculation in the .SDcols parameter.  Filtered and grouped calculations also create additional elements of the syntax to study.  With this in mind, motivated users can create additional methods that can be applied in these frameworks, either using data.table directory or with the dt.calculate method from the DTwrappers package.</p>
-</div>
-<div class="include-after">
 </div>
 <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js" defer></script>
